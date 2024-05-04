@@ -1,0 +1,45 @@
+{% extends 'Restaurant/base.html' %}
+
+{% block title %} Listado de Mesas {% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="mb-0">Mesas</h2>
+            <a href="{% url 'mesa-crear' %}" class="btn btn-success">Crear Mesa</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Numero Mesa</th>
+                    <th scope="col">Disponible</th>
+                    <th scope="col">Capacidad</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if mesas %}
+                {% for mesa in mesas %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ mesa.numero }}</td>
+                    <td>{{ mesa.disponible }}</td>
+                    <td>{{ mesa.capacidad }}</td>
+                    <td> 
+                        <a href="{% url 'mesa-update' mesa.id %}" class="btn btn-primary btn-sm">Editar</a>
+                        <a href="{% url 'mesa-delete' mesa.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td> 
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="7">No hay Mesas.</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

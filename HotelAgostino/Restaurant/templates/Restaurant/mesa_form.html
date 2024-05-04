@@ -1,0 +1,28 @@
+{% extends 'Restaurant/base.html' %}
+
+{% block title %} Restaurant {% endblock title %}
+
+{% block content %}
+<h3>{% if object %}Editar Mesa: {{ object.nombre }}{% else %}Nueva Mesa{% endif %}</h3>
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            Datos de la Mesa
+                        </div>
+                        <div class="card-body">
+                            <form method="post">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit" class="btn btn-primary">Envíar</button>
+                                <a href="{% url 'mesa-lista' %}">Cancel</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

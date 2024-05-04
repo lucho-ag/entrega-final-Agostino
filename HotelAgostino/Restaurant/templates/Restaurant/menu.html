@@ -1,0 +1,76 @@
+{% extends 'Restaurant/base.html' %}
+
+{% block title %}Menu{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Menú</h1>
+            <a href="{% url 'reserva-crear' %}" class="btn btn-success">Crear Reserva</a>
+        </div>
+
+        <ul class="list-group">
+            <li class="list-group-item active">
+                <h2 class="mb-0">Principales</h2>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>Cheeseburger</span>
+                <span class="badge badge-primary badge-pill">$34</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>Cheese sandwich</span>
+                <span class="badge badge-primary badge-pill">$22</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>Chicken burguer</span>
+                <span class="badge badge-primary badge-pill">$23</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>Spicy Chicken</span>
+                <span class="badge badge-primary badge-pill">$33</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>Hot Dog</span>
+                <span class="badge badge-primary badge-pill">$24</span>
+            </li>
+            
+
+            <li class="list-group-item active">
+                <h2 class="mb-0">Guarniciones</h2>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>Nuggets</span>
+                <span class="badge badge-primary badge-pill">$14</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>French fries</span>
+                <span class="badge badge-primary badge-pill">$15</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>Salad</span>
+                <span class="badge badge-primary badge-pill">$10</span>
+            </li>
+
+
+            <li class="list-group-item active">
+                <h2 class="mb-0">Bebidas</h2>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>Milk Shake</span>
+                <span class="badge badge-primary badge-pill">$4</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>Iced Tea</span>
+                <span class="badge badge-primary badge-pill">$2</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>Water</span>
+                <span class="badge badge-primary badge-pill">$1</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>Soda</span>
+                <span class="badge badge-primary badge-pill">$3</span>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

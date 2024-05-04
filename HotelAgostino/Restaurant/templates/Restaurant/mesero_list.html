@@ -1,0 +1,43 @@
+{% extends 'Restaurant/base.html' %}
+
+{% block title %} Listado de Meseros {% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="mb-0">Meseros</h2>
+            <a href="{% url 'mesero-crear' %}" class="btn btn-success">Crear Mesero</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Mesa Asignada</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if meseros %}
+                {% for mesero in meseros %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ mesero.nombre }}</td>
+                    <td>{{ mesero.mesa_asignada }}</td>
+                    <td> 
+                        <a href="{% url 'mesero-update' mesero.id %}" class="btn btn-primary btn-sm">Editar</a>
+                        <a href="{% url 'mesero-delete' mesero.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td> 
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="7">No hay Meseros.</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

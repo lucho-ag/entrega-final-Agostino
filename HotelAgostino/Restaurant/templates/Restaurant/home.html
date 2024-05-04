@@ -1,0 +1,37 @@
+{% extends 'Restaurant/base.html' %}
+{% load static %}
+
+{% block title %}Restaurant{% endblock title %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Bienvenido al Restaurante del HotelAgostino</h1>
+        <p>Explora nuestro delicioso menú!</p>
+    </div>
+</section>
+<br>
+<div class="hero-content">
+        <img src="{% static 'Restaurant/restaurante.jpg' %}" alt="Descripción de la imagen" style="height: 400px; width: 400px;">
+        <br>
+        <br>
+        <a href="{% url 'menu' %}" class="btn btn-primary">Ver Menu</a>
+</div> 
+
+{% else %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Bienvenido al Restaurante del HotelAgostino</h1>
+        <p>Crea un usuario o inicia sesion para ver todas nuestras caracteristicas!</p>
+        <img src="{% static 'Restaurant/restaurante.jpg' %}" alt="Descripción de la imagen" style="height: 400px; width: 400px";>
+        <br>
+        <br>
+        <a href="{% url 'crear-usuario' %}" class="btn btn-primary">Crear usuario</a>
+        <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+    </div>
+</section>
+{% endif %}
+{% endblock %}
+

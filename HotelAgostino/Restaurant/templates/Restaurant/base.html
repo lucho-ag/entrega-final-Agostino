@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} xxxxx {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'Restaurant/bootstrap.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#BACEFF">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkReserva" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Reservas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkReserva">
+                        <a class="dropdown-item" href="{% url 'reserva-lista' %}">Todas las Reservas</a>
+                        <a class="dropdown-item" href="{% url 'reserva-crear' %}">Crear Reserva</a>
+                        <a class="dropdown-item" href="{% url 'reserva-search' %}">Buscar Reserva por nombre</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkSala" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mesas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkSala">
+                        <a class="dropdown-item" href="{% url 'mesa-lista' %}">Todas las Mesas</a>
+                        <a class="dropdown-item" href="{% url 'mesa-crear' %}">Crear Mesa</a>
+                        <a class="dropdown-item" href="{% url 'mesa-search' %}">Buscar Mesa</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkSala" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Meseros
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkSala">
+                        <a class="dropdown-item" href="{% url 'mesero-lista' %}">Todos los Meseros</a>
+                        <a class="dropdown-item" href="{% url 'mesero-crear' %}">Crear Mesero</a>
+                    </div>
+                </li>
+                {% endif %}
+            </ul>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about-me' %}">Sobre mi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user-edit' %}">{{ user }}</a>
+                </li>
+                <li class="nav-item">
+                    {% if user.avatar.image %}
+                    <a href="{% url 'avatar' %}">
+                        <img src="{{ user.avatar.image.url }}" alt="Avatar" style="height: 40px; width: 40px; border-radius: 50%;">
+                    </a>
+                    {% else %}
+                    <li class="nav-item">
+                        <a href="{% url 'avatar' %}" class="nav-link">Ingresar Avatar</a>
+                    </li>
+                    {% endif %}
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'crear-usuario' %}">Crear Usuario</a>
+                </li>
+            {% endif %}
+        </ul> 
+        </div>
+    </nav>
+    <!-- Main content -->
+    <div class="container mt-4">
+        {% block content %}
+        <!-- Content goes here -->
+        {% endblock content %}
+    </div>
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

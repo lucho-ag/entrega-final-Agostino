@@ -1,0 +1,27 @@
+{% extends 'Restaurant/base.html' %}
+{% load static %}
+
+{% block title %}About Me{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mt-5">
+                <div class="card-header">
+                    <h2 class="text-center">Sobre mi...</h2>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <img src="{% static 'Restaurant/perfil.jpg' %}" alt="Profile Image">
+                    </div>
+                    <p>Hola!</p>
+                    <p>Mi nombre es Luciano Agostino, tengo 17 años y esta es mi primer página web</p>
+                    <p>Desde que naci pracitamente me crie en ambientes técnologicos y es lo que me insipiro principalmente a iniciarme en el mundo de la programación. Este es mi primer curso y creo que me brindo muchisimas herramientas increibles para comenzar un largo camino.</p>
+                    <p>Soy una persona simple aunque apasionada en lo que hace la cual no va a descansar hasta lograr lo que se propone, cuento con una buena logica para la programación a pesar de mi corta edad.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

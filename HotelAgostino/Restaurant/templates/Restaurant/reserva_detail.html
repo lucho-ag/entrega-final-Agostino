@@ -1,0 +1,27 @@
+{% extends 'Restaurant/base.html' %}
+
+{% block title %}Detalle de la Reserva{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        Detalle de la Reserva
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ reserva.nombre_de_usuario }}</h5>
+                        <p class="card-text">Mesa: {{ reserva.mesa }}</p>
+                        <p class="card-text">Fecha: {{ reserva.fecha }}</p>
+                        <p class="card-text">Hora de inicio: {{ reserva.hora_inicio }}</p>
+                        <a href="{% url 'reserva-lista' %}">Volver</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
